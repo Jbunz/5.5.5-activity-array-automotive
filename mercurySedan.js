@@ -16,6 +16,11 @@ console.log(v.make);
 //Note: You can code your derived Car class here or make a file named index.js and do it there.
 class Car extends VehicleModule.Vehicle {
   constructor(
+    make,
+    model,
+    year,
+    color,
+    mileage,
     maximumPassengers,
     passengers,
     numberOfWheels,
@@ -23,14 +28,32 @@ class Car extends VehicleModule.Vehicle {
     fuel,
     scheduleService
   ) {
-    super(
-      maximumPassengers,
-      passengers,
-      numberOfWheels,
-      maximumSpeed,
-      fuel,
-      scheduleService
-    );
+    super(make, model, year, color, mileage);
+
+    this.maximumPassengers = maximumPassengers;
+    this.passengers = passengers;
+    this.numberOfWheels = numberOfWheels;
+    this.maximumSpeed = maximumSpeed;
+    this.fuel = fuel;
+    this.scheduleService = scheduleService;
+  }
+
+  loadPassengers(num) {
+    if (this.passengers > this.maximumPassengers) {
+      this.availableRoom = true;
+    }
+  }
+
+  start() {
+    if (this.fuel > 0) {
+      this.start = true;
+    }
+  }
+
+  scheduleService(mileage) {
+    if (mileage > 30000) {
+      this.timeForMaintenance = true;
+    }
   }
 }
 
